@@ -1,18 +1,20 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import App from '../App';
-import CommentBox from '../CommentBox';
+import { mount } from 'enzyme';
+import CommentBox from 'components/CommentBox';
+import Root from 'Root';
 
 let wrapped;
-describe('textarea stuff', () => {
 
+
+describe('textarea stuff', () => {
     beforeEach(()=> {
-        wrapped = mount(<App />);
+        wrapped = mount(<Root><CommentBox /></Root>);
         wrapped.find('textarea').simulate('change', {
             target: { value: 'new comment' }
                 });
             wrapped.update();
     });
+    
 
     it('texture can be updated', () => { //using mount
         expect(wrapped.find('textarea').prop('value')).toEqual('new comment');

@@ -5,6 +5,19 @@ import Root from 'Root';
 
 let wrapped;
 
+beforeEach(()=> {
+    wrapped = mount(<Root><CommentBox /></Root>);
+});
+
+it('has a text area and two buttons', () =>{
+    expect(wrapped.find('textarea').length).toEqual(1);
+    expect(wrapped.find('button').length).toEqual(2);
+});
+
+afterEach(() => {
+    wrapped.unmount();
+})
+
 
 describe('textarea stuff', () => {
     beforeEach(()=> {
@@ -28,5 +41,5 @@ describe('textarea stuff', () => {
 
     afterEach(() => {
         wrapped.unmount();
-    })
+    });
 });
